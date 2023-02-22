@@ -368,6 +368,7 @@ if shared.AshuraExecuted then
 				themeList.ElementColor = color
 			end
 		end
+-- Sorry.
 		local Tabs = {}
 
 		local first = true
