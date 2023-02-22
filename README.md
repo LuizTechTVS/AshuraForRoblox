@@ -1,2 +1,4 @@
-# ASHURA V1
-**A script that I have made for mobile, mostly known for bedwars.**
+# ASHURA REWRITE
+**A script that I have made for mobile, totally not mostly known for bedwars.**
+
+### Everything Is Made By 7GrandLittleBrother/KenzuX/SVamp/Vamp
