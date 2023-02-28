@@ -1,4 +1,4 @@
-if shared.AshuraExecuted then
+-- Why Im Fixed Drag, Bug Camer Drag Idiot
 	local GuiLibrary = {}
 
 	local tween = game:GetService("TweenService")
@@ -14,35 +14,35 @@ if shared.AshuraExecuted then
 
 		-- stolen from wally or kiriot, kek
 		local dragging = false
-		local dragInput, mousePos, framePos
+    local dragInput, mousePos, framePos
 
-		frame.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-				dragging = true
-				mousePos = input.Position
-				framePos = parent.Position
+    frame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            mousePos = input.Position
+            framePos = parent.Position
+            
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
 
-				input.Changed:Connect(function()
-					if input.UserInputState == Enum.UserInputState.End then
-						dragging = false
-					end
-				end)
-			end
-		end)
+    frame.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+        end
+    end)
 
-		frame.InputChanged:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-				dragInput = input
-			end
-		end)
-
-		input.InputChanged:Connect(function(input)
-			if input == dragInput and dragging then
-				local delta = input.Position - mousePos
-				parent.Position  = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
-			end
-		end)
-	end
+    input.InputChanged:Connect(function(input)
+        if input == dragInput and dragging then
+            local delta = input.Position - mousePos
+            parent.Position  = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
+        end
+    end)
+end
 
 	function Utility:TweenObject(obj, properties, duration, ...)
 		tween:Create(obj, tweeninfo(duration, ...), properties):Play()
@@ -2648,4 +2648,4 @@ if shared.AshuraExecuted then
 		return Tabs
 	end
 	return GuiLibrary
-end
+
